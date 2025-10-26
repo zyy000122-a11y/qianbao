@@ -1,0 +1,630 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  background-color: #f5f5f5;
+  color: #333;
+  line-height: 1.6;
+}
+
+#app {
+  position: relative;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.page {
+  display: none;
+  flex: 1;
+  overflow-y: scroll;
+  padding: 16px;
+  background: #f8f8f8;
+  padding-bottom: 70px!important;
+}
+
+.page.active {
+  display: block;
+}
+
+#asset-page{
+	background-color: #FFFFFF;
+}
+/* —————— 资产页样式 —————— */
+
+/* 资产页容器 */
+#asset-page {
+  padding: 16px;
+  background: #ffffff;
+  min-height: 100vh;
+  box-sizing: border-box;
+}
+
+/* 余额卡片 */
+.balance-card {
+  background: #000000;
+  border-radius: 12px;
+  padding: 10px 16px;
+  margin-bottom: 16px;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.05);
+}
+
+.header-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 4px;
+}
+
+.title {
+  font-size: 16px;
+  font-weight: bold;
+  color: #ffffff;
+}
+
+.copy-icon,
+.more-icon,
+.eye-icon {
+  width: 20px;
+  height: 20px;
+  margin-left: 8px;
+  cursor: pointer;
+}
+.copy-icon{
+	width: 10px;
+	height: 10px;
+}
+.eye-icon{
+	width: 15px;
+	height: 15px;
+}
+
+.copy-icon:hover,
+.more-icon:hover,
+.eye-icon:hover {
+  opacity: 1;
+}
+
+.amount-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.amount {
+  font-size: 24px;
+  font-weight: bold;
+  color: #fff;
+}
+
+.change-row {
+  font-size: 12px;
+  color: #f8f8f8;
+}
+.change-row span{
+	background: rgba(255,255,255,0.1);
+	border-radius: 8px;
+	padding: 1px 4px;
+}
+
+/* 功能按钮区 */
+.action-buttons {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.btn-transfer,
+.btn-receive,
+.btn-swap,
+.btn-more {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: #F3F2F7;
+  border: none;
+  border-radius: 8px;
+  padding: 12px 8px;
+  cursor: pointer;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.05);
+  transition: background 0.2s;
+}
+
+.btn-transfer:hover,
+.btn-receive:hover,
+.btn-swap:hover,
+.btn-more:hover {
+  background: #f9f9f9;
+}
+
+.btn-icon {
+  width: 24px;
+  height: 24px;
+  margin-bottom: 4px;
+  object-fit: contain;
+}
+
+/* 标签栏 */
+.tab-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+  padding: 8px 0;
+}
+
+.left-icons .tab {
+  font-size: 14px;
+  color: #999;
+  margin-right: 16px;
+  cursor: pointer;
+  position: relative;
+}
+
+.left-icons .tab.active {
+  color: #333;
+  font-weight: bold;
+}
+
+.left-icons .tab.active::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: #333;
+  border-radius: 2px;
+}
+
+.right-icons .icon-small {
+  width: 20px;
+  height: 20px;
+  margin-left: 12px;
+  cursor: pointer;
+  opacity: 0.7;
+}
+
+.right-icons .icon-small:hover {
+  opacity: 1;
+}
+
+/* 资产列表 */
+.asset-list {
+  background: white;
+  border-radius: 12px;
+  /* padding: 12px; */
+  /* box-shadow: 0 1px 4px rgba(0,0,0,0.05); */
+}
+
+.asset-item {
+  display: flex;
+  align-items: center;
+  padding: 12px 0;
+  border-bottom: 1px solid #eee;
+}
+
+.asset-item:last-child {
+  border-bottom: none;
+}
+
+.coin-icon {
+  width: 32px;
+  height: 32px;
+  margin-right: 12px;
+}
+
+.coin-info {
+  flex: 1;
+}
+
+.coin-name {
+  font-size: 14px;
+  font-weight: bold;
+  color: #333;
+}
+
+.coin-price {
+  font-size: 12px;
+  color: #666;
+}
+
+.up {
+  color: #00aa00;
+  font-weight: bold;
+}
+
+.down {
+  color: #ff5555;
+  font-weight: bold;
+}
+
+.neutral {
+  color: #999;
+}
+
+.coin-balance {
+  text-align: right;
+}
+
+.coin-balance > div {
+  font-size: 16px;
+  color: #000;
+}
+
+.usd-value {
+  font-size: 12px!important;
+  color: #666!important;
+}
+
+/* —————— 交易页样式 —————— */
+
+/* 交易页容器 */
+#trade-page {
+  padding: 16px;
+  background: #F3F2F7;
+  min-height: 100vh;
+  box-sizing: border-box;
+}
+
+.trade-page-main{
+	background: #ffffff;
+	padding: 16px;
+	border-radius: 20px;
+}
+/* 顶部标题栏 */
+.trade-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+}
+/* 顶部操作图标 */
+.header-actions .header-icon {
+  width: 20px;
+  height: 20px;
+  margin-left: 12px;
+  cursor: pointer;
+  transition: opacity 0.2s;
+}
+
+.header-actions .header-icon:hover {
+  opacity: 1;
+}
+
+.trade-header h2 {
+  font-size: 18px;
+  font-weight: bold;
+  color: #333;
+  transform: skewX(-10deg);
+}
+
+.header-actions span {
+  font-size: 20px;
+  color: #999;
+  margin-left: 12px;
+  cursor: pointer;
+}
+
+/* 币种选择器通用样式 */
+.coin-selector {
+  background: white;
+  border-radius: 12px;
+  margin-bottom:20px;
+}
+
+.coin-selector .label {
+  font-size: 12px;
+  color: #666;
+  margin-bottom: 8px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+
+.btn-all {
+  color: #4a90e2;
+  /* font-weight: bold; */
+}
+.qb-all{
+	color: #999;
+}
+.qb-icon{
+	width: 10px;
+	margin-right: 4px;
+}
+.sf-content{
+	display: flex;
+	background: #F3F2F7;
+	border-radius: 12px;
+	padding: 8px;
+}
+.coin-xl{
+	width: 12px;
+	margin-left: 12px;
+}
+.coin-option {
+	flex: 1;
+  display: flex;
+  align-items: center;
+  background: #fff;
+  padding: 8px 12px;
+  cursor: pointer;
+  border-radius: 12px;
+}
+
+.coin-icon {
+  width: 30px;
+  height: 30px;
+  margin-right: 8px;
+}
+
+.coin-info {
+  flex: 1;
+}
+
+.coin-name {
+  font-size: 16px;
+  font-weight: bold;
+  color: #333;
+}
+
+.chain {
+  font-size: 12px;
+  color: #999;
+}
+
+.coin-option span:last-child {
+  font-size: 16px;
+  color: #999;
+}
+
+/* 数量输入框 */
+.amount-input {
+	width: 50%;
+  display: flex;
+  align-items: center;
+  background: #F3F2F7;
+  border-radius: 8px;
+  padding: 8px 12px;
+  position: relative;
+}
+
+.amount-input input {
+  width: 100%;
+  background: transparent;
+  border: none;
+  font-size: 16px;
+  text-align: right;
+  color: #333;
+  outline: none;
+}
+
+.amount-input span {
+  font-size: 14px;
+  color: #666;
+  margin-left: 8px;
+  cursor: pointer;
+}
+
+
+
+/* 切换箭头 */
+.swap-arrow {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 24px;
+  color: #999;
+  margin: 8px 0;
+  cursor: pointer;
+}
+
+/* 主操作按钮 */
+.exchange-btn {
+  width: 100%;
+  background: #4a90e2;
+  color: white;
+  border: none;
+  border-radius: 12px;
+  padding: 12px 0;
+  font-size: 16px;
+  font-weight: bold;
+  margin: 16px 0;
+  cursor: pointer;
+  opacity: 0.7;
+  transition: background 0.2s;
+}
+
+.exchange-btn:hover {
+  background: #3a7bc8;
+}
+
+/* 详情列表 */
+.detail-list {
+  background: white;
+  border-radius: 12px;
+  padding: 4px 10px;
+  /* box-shadow: 0 1px 4px rgba(0,0,0,0.05); */
+  border: 1px solid rgba(0,0,0,0.05);
+}
+
+.detail-item {
+  display: flex;
+  justify-content: space-between;
+  padding: 8px 0;
+  /* border-bottom: 1px solid #F3F2F7; */
+  font-size: 14px;
+}
+.detail-item  span{
+	display: flex;
+	align-items: center;
+}
+.arrow{
+	width: 16px;
+}
+.detail-item:last-child {
+  border-bottom: none;
+}
+
+.detail-item span:first-child {
+  color: #666;
+}
+
+.detail-item span:last-child {
+  color: #333;
+  font-weight: 500;
+}
+
+.detail-item.clickable span:last-child {
+  color: #999;
+  cursor: pointer;
+}
+
+/* 记录区域 */
+.record-section {
+  /* background: white; */
+  border-radius: 12px;
+  padding: 16px;
+  /* box-shadow: 0 1px 4px rgba(0,0,0,0.05); */
+}
+
+.record-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.record-header span {
+  font-size: 14px;
+  color: #333;
+}
+
+.record-header .more-link {
+  color: #999;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+
+/* —————— 我的页样式 —————— */
+
+/* 我的页面容器 */
+#my-page {
+  padding: 16px;
+  background: #F3F2F7;
+  min-height: 100vh;
+  box-sizing: border-box;
+}
+
+/* 菜单分组 */
+.menu-group {
+  background: white;
+  border-radius: 12px;
+  padding: 12px 0;
+  margin-bottom: 16px;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.05);
+}
+
+/* 菜单项 */
+.menu-item {
+  display: flex;
+  align-items: center;
+  padding: 12px 16px;
+  cursor: pointer;
+  position: relative;
+  transition: background 0.2s;
+}
+
+.menu-item:hover {
+  background: #f9f9f9;
+}
+
+.menu-item:not(:last-child) {
+  border-bottom: 1px solid #eee;
+}
+
+/* 左侧图标 */
+.icon-img {
+  width: 24px;
+  height: 24px;
+  margin-right: 12px;
+  object-fit: contain;
+}
+
+/* 文字 */
+.text {
+  flex: 1;
+  font-size: 14px;
+  color: #333;
+  font-weight: 500;
+}
+
+/* 右侧箭头图片 */
+.arrow-icon {
+  width: 16px;
+  height: 16px;
+  margin-left: 8px;
+  opacity: 0.8;
+}
+
+
+
+/* —————— 底部导航 —————— */
+
+/* 底部导航栏 */
+.bottom-nav {
+  display: flex;
+  background: white;
+  border-top: 1px solid #ddd;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  box-shadow: 0 -2px 10px rgba(0,0,0,0.05);
+}
+
+.nav-item {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 8px 0;
+  font-size: 12px;
+  color: #999; /* 默认灰色 */
+  cursor: pointer;
+  position: relative;
+}
+
+/* 图标样式 */
+.nav-icon {
+  width: 20px;
+  height: 20px;
+  transition: filter 0.2s;
+}
+
+/* 选中状态 */
+.nav-item.active {
+  color: #000000; /* 蓝色 */
+}
+
+.nav-item.active .nav-icon {
+  /* filter: brightness(0) saturate(100%) invert(37%) sepia(71%) saturate(562%) hue-rotate(199deg) brightness(95%) contrast(91%); */
+  /* 或者直接替换为 _active.png，由 JS 控制 */
+}
+
+/* 禁用状态（如需） */
+.nav-item.disabled {
+  color: #ccc;
+  cursor: default;
+  pointer-events: none;
+}

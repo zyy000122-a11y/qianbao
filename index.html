@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>钱包开发系统</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div id="app">
+
+    <!-- 资产页 -->
+   <div class="page active" id="asset-page">
+   
+     <!-- 余额卡片 -->
+     <header class="balance-card">
+       <div class="header-row">
+         <span class="title">发财发财 <img src="./img/zc/zc_copy.png" alt="复制" class="copy-icon" /></span>
+         <img src="./img/zc/zc_more.png" alt="更多" class="more-icon" />
+       </div>
+       <div class="amount-row">
+         <span class="amount">$0<img src="./img/zc/zc_eye.png" alt="隐藏金额" class="eye-icon" /></span>
+         
+       </div>
+       <div class="change-row">
+         <span>今日盈亏 $0(0.00%) ▸</span>
+       </div>
+     </header>
+   
+     <!-- 功能按钮 -->
+     <div class="action-buttons">
+       <button class="btn-transfer">
+         <img src="./img/zc/zc_transfer.png" alt="转账" class="btn-icon" />
+         <span>转账</span>
+       </button>
+       <button class="btn-receive">
+         <img src="./img/zc/zc_receive.png" alt="收款" class="btn-icon" />
+         <span>收款</span>
+       </button>
+       <button class="btn-swap">
+         <img src="./img/zc/zc_swap.png" alt="闪兑" class="btn-icon" />
+         <span>闪兑</span>
+       </button>
+       <button class="btn-more">
+         <img src="./img/zc/zc_more_tools.png" alt="更多工具" class="btn-icon" />
+         <span>更多工具</span>
+       </button>
+     </div>
+   
+     <!-- 标签栏 -->
+     <div class="tab-bar">
+       <div class="left-icons">
+         <span class="tab active">资产</span>
+         <span class="tab">DeFi</span>
+         <span class="tab">NFT</span>
+       </div>
+       <div class="right-icons">
+         <img src="./img/zc/zc_search.png" alt="搜索" class="icon-small" />
+         <img src="./img/zc/zc_add.png" alt="添加" class="icon-small" />
+       </div>
+     </div>
+   
+     <!-- 资产列表 -->
+     <div class="asset-list">
+       <div class="asset-item">
+         <img src="./img/BNB.png" alt="BNB" class="coin-icon" />
+         <div class="coin-info">
+           <div class="coin-name">BNB</div>
+           <div class="coin-price">$1,115.70 <span class="up">+1.35%</span></div>
+         </div>
+         <div class="coin-balance">
+           <div>0</div>
+           <div class="usd-value">$0</div>
+         </div>
+       </div>
+   
+       <div class="asset-item">
+         <img src="./img/usdc.png" alt="USDC" class="coin-icon" />
+         <div class="coin-info">
+           <div class="coin-name">USDC</div>
+           <div class="coin-price">$0.9990 <span class="down">-0.01%</span></div>
+         </div>
+         <div class="coin-balance">
+           <div>0</div>
+           <div class="usd-value">$0</div>
+         </div>
+       </div>
+   
+       <div class="asset-item">
+         <img src="./img/USDT.png" alt="USDT" class="coin-icon" />
+         <div class="coin-info">
+           <div class="coin-name">USDT</div>
+           <div class="coin-price">$1.0000 <span class="neutral">0.00%</span></div>
+         </div>
+         <div class="coin-balance">
+           <div>0</div>
+           <div class="usd-value">$0</div>
+         </div>
+       </div>
+     </div>
+   
+   </div>
+    <!-- 交易页 -->
+    <div class="page" id="trade-page">
+      <div class="trade-page-main">
+        <div class="trade-header">
+          <h2>Transit</h2>
+          <div class="header-actions">
+            <img src="./img/jy/jy_refresh.png" alt="刷新" class="header-icon" />
+            <img src="./img/jy/jy_settings.png" alt="设置" class="header-icon" />
+          </div>
+        </div>
+    
+        <!-- 发送区域 -->
+        <div class="coin-selector send-selector">
+          <div class="label">
+            <span>发送</span>
+            <span class="btn-all">
+				<span class="qb-all"><img src="./img/jy/jy_qb.png" alt="USDT" class="qb-icon" />0</span>
+				全部
+			</span>
+          </div>
+          <div class="sf-content">
+            <div class="coin-option">
+              <img src="./img/BNB.png" alt="BNB" class="coin-icon" />
+              <div class="coin-info">
+                <div class="coin-name">BNB<img src="./img/jy/jy_xl.png" alt="USDT" class="coin-xl" /></div>
+                <div class="chain">币安智能链</div>
+              </div>
+            </div>
+            <div class="amount-input">
+              <input type="text" placeholder="转出数量"  />
+            </div>
+          </div>
+        </div>
+    
+        <!-- 接收区域 -->
+        <div class="coin-selector receive-selector">
+          <div class="label">
+            <span>接收（预估）</span>
+            <img src="./img/jy/jy_jt.png" alt="USDT" class="coin-icon" />
+            <span class="qb-all"><img src="./img/jy/jy_qb.png" alt="USDT" class="qb-icon" />0</span>
+          </div>
+          <div class="sf-content">
+            <div class="coin-option">
+              <img src="./img/USDT.png" alt="USDT" class="coin-icon" />
+              <div class="coin-info">
+                <div class="coin-name">USDT<img src="./img/jy/jy_xl.png" alt="USDT" class="coin-xl" /></div>
+                <div class="chain">币安智能链</div>
+              </div>
+            </div>
+            <div class="amount-input">
+              <input type="text" placeholder="接收数量"  />
+            </div>
+          </div>
+        </div>
+    
+        <!-- 主操作按钮 -->
+        <button class="exchange-btn">请输入兑换数量</button>
+    
+        <!-- 详情列表 -->
+        <div class="detail-list">
+          <div class="detail-item">
+            <span>兑换价格</span>
+            <span>-</span>
+          </div>
+          <div class="detail-item">
+            <span>最少接收数量</span>
+            <span>-</span>
+          </div>
+          <div class="detail-item clickable">
+            <span>滑点</span>
+            <span>2%<img src="./img/jy/jy_arrow.png" alt="跳转" class="arrow" /></span>
+          </div>
+          <div class="detail-item">
+            <span>价格影响</span>
+            <span>-</span>
+          </div>
+          <div class="detail-item">
+            <span>手续费</span>
+            <span>-</span>
+          </div>
+          <div class="detail-item clickable">
+            <span>兑换路径</span>
+            <span>Transit > </span>
+          </div>
+        </div>
+      </div>
+    
+      <!-- 记录区域 -->
+      <div class="record-section">
+        <div class="record-header">
+          <span>最近一条记录</span>
+          <span class="more-link">更多记录</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- 我的页 -->
+    <div class="page" id="my-page">
+    
+      <!-- 资产相关 -->
+      <div class="menu-group">
+        <div class="menu-item" data-target="asset-overview">
+          <img src="./img/my/my_asset.png" alt="资产总览" class="icon-img" />
+          <span class="text">资产总览</span>
+          <img src="./img/arrow_right.png" alt="前往" class="arrow-icon" />
+        </div>
+        <div class="menu-item" data-target="wallet-management">
+          <img src="./img/my/my_wallet.png" alt="管理钱包" class="icon-img" />
+          <span class="text">管理钱包</span>
+          <img src="./img/arrow_right.png" alt="前往" class="arrow-icon" />
+        </div>
+        <div class="menu-item" data-target="transaction-record">
+          <img src="./img/my/my_trade.png" alt="交易记录" class="icon-img" />
+          <span class="text">交易记录</span>
+          <img src="./img/arrow_right.png" alt="前往" class="arrow-icon" />
+        </div>
+      </div>
+    
+      <!-- 功能区 -->
+      <div class="menu-group">
+        <div class="menu-item" data-target="experience-zone">
+          <img src="./img/my/my_experience.png" alt="体验区" class="icon-img" />
+          <span class="text">体验区</span>
+          <img src="./img/arrow_right.png" alt="前往" class="arrow-icon" />
+        </div>
+        <div class="menu-item" data-target="address-book">
+          <img src="./img/my/my_address.png" alt="地址本" class="icon-img" />
+          <span class="text">地址本</span>
+          <img src="./img/arrow_right.png" alt="前往" class="arrow-icon" />
+        </div>
+      </div>
+    
+      <!-- 其他 -->
+      <div class="menu-group">
+        <div class="menu-item" data-target="invite-friends">
+          <img src="./img/my/my_invite.png" alt="邀请好友" class="icon-img" />
+          <span class="text">邀请好友</span>
+          <img src="./img/arrow_right.png" alt="前往" class="arrow-icon" />
+        </div>
+        <div class="menu-item" data-target="wallet-guide">
+          <img src="./img/my/my_guide.png" alt="钱包指引" class="icon-img" />
+          <span class="text">钱包指引</span>
+          <img src="./img/arrow_right.png" alt="前往" class="arrow-icon" />
+        </div>
+        <div class="menu-item" data-target="about-us">
+          <img src="./img/my/my_about.png" alt="关于我们" class="icon-img" />
+          <span class="text">关于我们</span>
+          <img src="./img/arrow_right.png" alt="前往" class="arrow-icon" />
+        </div>
+        <div class="menu-item" data-target="system-settings">
+          <img src="./img/my/my_setting.png" alt="系统设置" class="icon-img" />
+          <span class="text">系统设置</span>
+          <img src="./img/arrow_right.png" alt="前往" class="arrow-icon" />
+        </div>
+      </div>
+    
+    </div>
+
+    <!-- 底部导航栏 -->
+    <nav class="bottom-nav">
+      <div class="nav-item active" data-page="asset">
+        <img src="./img/tabbar/zc.png" alt="资产" class="nav-icon" />
+        <span>资产</span>
+        <!-- 可选：红点 -->
+        <!-- <span class="dot">●</span> -->
+      </div>
+      <div class="nav-item disabled" data-page="market">
+        <img src="./img/tabbar/qx.png" alt="直播" class="nav-icon" />
+        <span>直播</span>
+      </div>
+      <div class="nav-item" data-page="trade">
+        <img src="./img/tabbar/jy.png" alt="交易" class="nav-icon" />
+        <span>交易</span>
+      </div>
+      <div class="nav-item disabled" data-page="discover">
+        <img src="./img/tabbar/fx.png" alt="一键发币" class="nav-icon" />
+        <span>一键发币</span>
+      </div>
+      <div class="nav-item" data-page="my">
+        <img src="./img/tabbar/wd.png" alt="我的" class="nav-icon" />
+        <span>我的</span>
+      </div>
+    </nav>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
